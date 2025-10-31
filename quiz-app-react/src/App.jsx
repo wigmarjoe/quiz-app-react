@@ -53,10 +53,10 @@ function App() {
   const [answered, setAnswered] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [score, setScore] = useState(0)
+  const [showScore, setShowScore] = useState(false)
 
   const handleAnswerOption = (index, isCorrect) => {
     setAnswered(true)
-    setSelectedAnswer(null)
     setSelectedAnswer(index)
     if(isCorrect) {
       setScore(score + 1)
@@ -66,13 +66,22 @@ function App() {
 
   const NextQuestion = () => {
     setAnswered(false)
-    setCurrentQuestion(currentquestion + 1)
+    setSelectedAnswer(null)
+    const nextQuestion = currentquestion + 1;
+    if(nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion)
+    } else {
+      setShowScore(true)
+    }
   }
 
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-lg bg-black p-5 rounded shadow-lg">
         <div className="p-2 border text-center font-bold mb-2 text-xl">Quiz App</div>
+        {showScore ? <div>
+          You Scored {score} of {questions.length}
+        </div> : 
         <div>
           <div>{questions[currentquestion].questionText}</div>
           {questions[currentquestion].answerOptions.map((option, index) => (
@@ -94,6 +103,7 @@ function App() {
           onClick={NextQuestion}>Next Question</button>
           <p className="text-center text-gray-400 text-sm mt-2">Question {currentquestion + 1} of {questions.length}</p>
         </div>
+        }
       </div>
     </div>
   )
