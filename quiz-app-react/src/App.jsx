@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const questions = [
   {
@@ -49,19 +49,25 @@ const questions = [
 ]
 
 function App() {
+  const [currentquestion, setCurrentQuestion] = useState(0)
+
+  const NextQuestion = () => {
+    setCurrentQuestion(currentquestion + 1)
+  }
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-lg bg-black p-5 rounded shadow-lg">
         <div className="p-2 border text-center font-bold mb-2 text-xl">Quiz App</div>
         <div>
-          <div>{questions[0].questionText}</div>
-          {questions[0].answerOptions.map((option, index) => (
+          <div>{questions[currentquestion].questionText}</div>
+          {questions[currentquestion].answerOptions.map((option, index) => (
             <button 
             className="block w-full p-2 mt-2 rounded">
               {option.answerText}</button>
           ))}
-          <button className="block w-full bg-green-500 mt-2 text-white p-2 rounded">Next Question</button>
-          <p>Question 1 of {questions.length}</p>
+          <button className="block w-full bg-green-500 mt-2 text-white p-2 rounded"
+          onClick={NextQuestion}>Next Question</button>
+          <p className="text-center text-gray-400 text-sm mt-2">Question {currentquestion + 1} of {questions.length}</p>
         </div>
       </div>
     </div>
