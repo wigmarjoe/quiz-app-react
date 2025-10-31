@@ -50,10 +50,11 @@ const questions = [
 
 function App() {
   const [currentquestion, setCurrentQuestion] = useState(0)
-
+  const [answered, setAnswered] = useState(false)
   const NextQuestion = () => {
     setCurrentQuestion(currentquestion + 1)
   }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-lg bg-black p-5 rounded shadow-lg">
@@ -65,7 +66,8 @@ function App() {
             className="block w-full p-2 mt-2 rounded">
               {option.answerText}</button>
           ))}
-          <button className="block w-full bg-green-500 mt-2 text-white p-2 rounded"
+          <button className={`${answered ? "bg-green-500" : "bg-green-300"} block w-full  mt-2 text-white p-2 rounded`}
+          disabled = {answered ? "" : "disabled"}
           onClick={NextQuestion}>Next Question</button>
           <p className="text-center text-gray-400 text-sm mt-2">Question {currentquestion + 1} of {questions.length}</p>
         </div>
