@@ -56,8 +56,12 @@ function App() {
         <div>
           <div>{questions[0].questionText}</div>
           {questions[0].answerOptions.map((option, index) => (
-            <button>{option.answerText}</button>
+            <button 
+            className="block w-full p-2 mt-2 rounded">
+              {option.answerText}</button>
           ))}
+          <button className="block w-full bg-green-500 mt-2 text-white p-2 rounded">Next Question</button>
+          <p>Question 1 of {questions.length}</p>
         </div>
       </div>
     </div>
