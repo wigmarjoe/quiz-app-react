@@ -51,7 +51,21 @@ const questions = [
 function App() {
   const [currentquestion, setCurrentQuestion] = useState(0)
   const [answered, setAnswered] = useState(false)
+  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [score, setScore] = useState(0)
+
+  const handleAnswerOption = (index, isCorrect) => {
+    setAnswered(true)
+    setSelectedAnswer(null)
+    setSelectedAnswer(index)
+    if(isCorrect) {
+      setScore(score + 1)
+    }
+  }
+
+
   const NextQuestion = () => {
+    setAnswered(false)
     setCurrentQuestion(currentquestion + 1)
   }
 
@@ -63,7 +77,16 @@ function App() {
           <div>{questions[currentquestion].questionText}</div>
           {questions[currentquestion].answerOptions.map((option, index) => (
             <button 
-            className="block w-full p-2 mt-2 rounded">
+            onClick={() => handleAnswerOption(index, option.isCorrect)}
+            className={`block w-full p-2 mt-2 rounded border ${
+              answered ?
+                option.isCorrect ?
+                "bg-green-300"
+                : selectedAnswer === index ?
+                "bg-red-200"
+                : ""
+                : ""
+            }`}>
               {option.answerText}</button>
           ))}
           <button className={`${answered ? "bg-green-500" : "bg-green-300"} block w-full  mt-2 text-white p-2 rounded`}
