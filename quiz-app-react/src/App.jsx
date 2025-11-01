@@ -20,30 +20,30 @@ const questions = [
     ],
   },
   {
-    questionText: 'What is the capital of India?',
+    questionText: 'What is the capital of Brazil?',
     answerOptions: [
-      { answerText: 'Dhaka', isCorrect: false },
+      { answerText: 'Ottawa', isCorrect: false },
       { answerText: 'London', isCorrect: false },
       { answerText: 'Paris', isCorrect: false },
-      { answerText: 'Dehli', isCorrect: true },
+      { answerText: 'Brasília', isCorrect: true },
     ],
   },
   {
-    questionText: 'What is the capital of Afghanistan?',
+    questionText: 'What is the capital of Canada?',
     answerOptions: [
-      { answerText: 'Dehli', isCorrect: false },
+      { answerText: 'Ottawa', isCorrect: true },
       { answerText: 'London', isCorrect: false },
-      { answerText: 'Kabul', isCorrect: true },
+      { answerText: 'Buenos Aires', isCorrect: false },
       { answerText: 'Dublin', isCorrect: false },
     ],
   },
   {
-    questionText: 'What is the capital of Pakistan?',
+    questionText: 'What is the capital of Australia?',
     answerOptions: [
       { answerText: 'New York', isCorrect: false },
-      { answerText: 'Islamabad', isCorrect: true },
+      { answerText: 'Canberra', isCorrect: true },
       { answerText: 'Paris', isCorrect: false },
-      { answerText: 'Peshawar', isCorrect: false },
+      { answerText: 'Assur', isCorrect: false },
     ],
   },
 ]
